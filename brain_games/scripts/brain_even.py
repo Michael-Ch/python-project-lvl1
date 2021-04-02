@@ -7,9 +7,9 @@ from brain_games.cli import welcome_user
 def math():
     NUMBER = randint(1, 100)
     if NUMBER % 2 == 0:
-        return(NUMBER, true_false_to_yes_no(True))
+        return(NUMBER, true_false_to_yes_no(True), 'yesno')
     else:
-        return(NUMBER, true_false_to_yes_no(False))
+        return(NUMBER, true_false_to_yes_no(False), 'yesno')
 
 
 def isyesnotrue(USER_ANSWER):
@@ -19,14 +19,20 @@ def isyesnotrue(USER_ANSWER):
         return False
 
 
-def game_question(USER_ANSWER, RESULT):
-    return str(USER_ANSWER) == str(RESULT)
+def game_question(USER_ANSWER, RESULT, TYPE_OF_ANSWER):
+    if TYPE_OF_ANSWER == 'yesno' and (USER_ANSWER.lower == 'yes' or USER_ANSWER.lower == 'no'):
+        return (str(USER_ANSWER) == str(RESULT), True)
+    else:
+        return(False, False)
 
 
-def game(EXPRESSION, RESULT):
+def game(EXPRESSION, RESULT, TYPE_OF_ANSWER):
     print('Question:', EXPRESSION)
     USER_ANSWER = prompt.string('Your answer: ')
-    if game_question(USER_ANSWER, RESULT):
+    (RIGHT_ANSWER, VERITY) = game_question(USER_ANSWER, RESULT, TYPE_OF_ANSWER)
+    if VERITY == False:
+        return (False, USER_ANSWER)
+    if RIGHT_ANSWER:
         return(True, USER_ANSWER)
     else:
         return(False, USER_ANSWER)
@@ -50,8 +56,7 @@ def game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N):
         print("Correct!")
         return N + 1
     else:
-        fault(USER_ANSWER, RESULT, NAME)
-        return 0
+         return -1
 
 
 def felicitation(NAME):
@@ -63,10 +68,15 @@ def main_flow(TASK):
     print(TASK)
     N = 0
     while N < 3:
-        (EXPRESSION, RESULT) = math()
-        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        (EXPRESSION, RESULT, TYPE_OF_ANSWER) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT, TYPE_OF_ANSWER)
         N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
-    felicitation(NAME)
+        if N == -1:
+            break
+    if N == -1:
+        fault(USER_ANSWER, RESULT, NAME)
+    else:
+        felicitation(NAME)
 
 
 def main():
