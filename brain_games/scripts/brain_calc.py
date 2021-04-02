@@ -33,7 +33,7 @@ def main_flow(TASK):
 
 
 def main():
-    TASK = "What is the RESULT of the EXPRESSION?"
+    TASK = "What is the result of the expression?"
     main_flow(TASK)
 
 
