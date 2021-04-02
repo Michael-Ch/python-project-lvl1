@@ -6,42 +6,42 @@ from .brain_even import game_flow, felicitation, game
 
 def math():
     # первый член
-    a1 = randint(1, 25)
+    A1 = randint(1, 25)
     # шаг
-    d = randint(1, 6)
+    D = randint(1, 6)
     # длина
-    n = randint(5, 10)
+    N = randint(5, 10)
     # номер неизвестного члена
-    ni = randint(1, n)
-    i = 1
-    ai = a1
-    progression = ''
-    while i <= n:
-        if i == ni:
-            progression = progression + " .."
-            result = ai
+    NI = randint(1, N)
+    II = 1
+    AI = A1
+    PROGRESSION = ''
+    while II <= N:
+        if II == NI:
+            PROGRESSION = PROGRESSION + " .."
+            RESULT = AI
         else:
-            progression = progression + ' ' + str(ai)
-        i = i + 1
-        ai = ai + d
-    return (progression, result)
+            PROGRESSION = PROGRESSION + ' ' + str(AI)
+        II = II + 1
+        AI = AI + D
+    return (PROGRESSION, RESULT)
 
 
-def main_flow(task):
-    name = welcome_user()
-    print(task)
-    n = 0
-    while n < 3:
-        (expression, result) = math()
-        (gameresult, user_answer) = game(expression, result)
-        n = game_flow(name, user_answer, result, gameresult, n)
-    felicitation(name)
+def main_flow(TASK):
+    NAME = welcome_user()
+    print(TASK)
+    N = 0
+    while N < 3:
+        (EXPRESSION, RESULT) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
+    felicitation(NAME)
 
 
 def main():
-    task = 'What number is missing in the progression?'
-    main_flow(task)
+    TASK = 'What number is missing in the PROGRESSION?'
+    main_flow(TASK)
 
 
 if __name__ == '__main__':
-    name = main()
+    NAME = main()

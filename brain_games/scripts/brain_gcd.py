@@ -5,32 +5,32 @@ from .brain_even import game_flow, felicitation, game
 
 
 def math():
-    num1 = randint(1, 25)
-    num2 = randint(1, 25)
-    (a, b) = (num1, num2)
-    while (a != 0) & (b != 0):
-        if a > b:
-            a = a % b
+    NUM1 = randint(1, 25)
+    NUM2 = randint(1, 25)
+    (A, B) = (NUM1, NUM2)
+    while (A != 0) & (B != 0):
+        if A > B:
+            A = A % B
         else:
-            b = b % a
-    return(str(num1) + ", " + str(num2), a + b)
+            B = B % A
+    return(str(NUM1) + ", " + str(NUM2), A + B)
 
 
-def main_flow(task):
-    name = welcome_user()
-    print(task)
-    n = 0
-    while n < 3:
-        (expression, result) = math()
-        (gameresult, user_answer) = game(expression, result)
-        n = game_flow(name, user_answer, result, gameresult, n)
-    felicitation(name)
+def main_flow(TASK):
+    NAME = welcome_user()
+    print(TASK)
+    N = 0
+    while N < 3:
+        (EXPRESSION, RESULT) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
+    felicitation(NAME)
 
 
 def main():
-    task = "Find the greatest common divisor of given numbers."
-    main_flow(task)
+    TASK = "Find the greatest common divisor of given numbers."
+    main_flow(TASK)
 
 
 if __name__ == '__main__':
-    name = main()
+    NAME = main()

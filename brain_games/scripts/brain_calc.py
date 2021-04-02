@@ -5,32 +5,32 @@ from .brain_even import game_flow, felicitation, game
 
 
 def math():
-    sign = randint(1, 3)
-    num1 = randint(1, 25)
-    num2 = randint(1, 25)
-    if sign == 1:
-        return("{}+{}".format(num1, num2), num1 + num2)
-    elif sign == 2:
-        return("{}-{}".format(num1, num2), num1 - num2)
+    SIGN = randint(1, 3)
+    NUM1 = randint(1, 25)
+    NUM2 = randint(1, 25)
+    if SIGN == 1:
+        return("{}+{}".format(NUM1, NUM2), NUM1 + NUM2)
+    elif SIGN == 2:
+        return("{}-{}".format(NUM1, NUM2), NUM1 - NUM2)
     else:
-        return("{}*{}".format(num1, num2), num1 * num2)
+        return("{}*{}".format(NUM1, NUM2), NUM1 * NUM2)
 
 
-def main_flow(task):
-    name = welcome_user()
-    print(task)
-    n = 0
-    while n < 3:
-        (expression, result) = math()
-        (gameresult, user_answer) = game(expression, result)
-        n = game_flow(name, user_answer, result, gameresult, n)
-    felicitation(name)
+def main_flow(TASK):
+    NAME = welcome_user()
+    print(TASK)
+    N = 0
+    while N < 3:
+        (EXPRESSION, RESULT) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
+    felicitation(NAME)
 
 
 def main():
-    task = "What is the result of the expression?"
-    main_flow(task)
+    TASK = "What is the RESULT of the EXPRESSION?"
+    main_flow(TASK)
 
 
 if __name__ == '__main__':
-    name = main()
+    main()

@@ -5,74 +5,74 @@ from brain_games.cli import welcome_user
 
 
 def math():
-    number = randint(1, 100)
-    if number % 2 == 0:
-        return(number, true_false_to_yes_no(True))
+    NUMBER = randint(1, 100)
+    if NUMBER % 2 == 0:
+        return(NUMBER, true_false_to_yes_no(True))
     else:
-        return(number, true_false_to_yes_no(False))
+        return(NUMBER, true_false_to_yes_no(False))
 
 
-def isyesnotrue(user_answer):
-    if user_answer == 'yes':
+def isyesnotrue(USER_ANSWER):
+    if USER_ANSWER == 'yes':
         return True
     else:
         return False
 
 
-def game_question(user_answer, result):
-    return str(user_answer) == str(result)
+def game_question(USER_ANSWER, RESULT):
+    return str(USER_ANSWER) == str(RESULT)
 
 
-def game(expression, result):
-    print('Question:', expression)
-    user_answer = prompt.string('Your answer: ')
-    if game_question(user_answer, result):
-        return(True, user_answer)
+def game(EXPRESSION, RESULT):
+    print('Question:', EXPRESSION)
+    USER_ANSWER = prompt.string('Your answer: ')
+    if game_question(USER_ANSWER, RESULT):
+        return(True, USER_ANSWER)
     else:
-        return(False, user_answer)
+        return(False, USER_ANSWER)
 
 
-def true_false_to_yes_no(something):
-    if something:
+def true_false_to_yes_no(SOMETHING):
+    if SOMETHING:
         return 'yes'
     else:
         return 'no'
 
 
-def fault(user_answer, result, name):
-    print("'{}' is wrong answer ;(.".format(user_answer), end='')
-    print(" Correct answer was '{}'.".format(result))
-    print("Let's try again, {}!".format(name))
+def fault(USER_ANSWER, RESULT, NAME):
+    print("'{}' is wrong answer ;(.".format(USER_ANSWER), end='')
+    print(" Correct answer was '{}'.".format(RESULT))
+    print("Let's try again, {}!".format(NAME))
 
 
-def game_flow(name, user_answer, result, gameresult, n):
-    if gameresult:
+def game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N):
+    if GAME_RESULT:
         print("Correct!")
-        return n + 1
+        return N + 1
     else:
-        fault(user_answer, result, name)
+        fault(USER_ANSWER, RESULT, NAME)
         return 0
 
 
-def felicitation(name):
-    print("Congratulations, {}!".format(name))
+def felicitation(NAME):
+    print("Congratulations, {}!".format(NAME))
 
 
-def main_flow(task):
-    name = welcome_user()
-    print(task)
-    n = 0
-    while n < 3:
-        (expression, result) = math()
-        (gameresult, user_answer) = game(expression, result)
-        n = game_flow(name, user_answer, result, gameresult, n)
-    felicitation(name)
+def main_flow(TASK):
+    NAME = welcome_user()
+    print(TASK)
+    N = 0
+    while N < 3:
+        (EXPRESSION, RESULT) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
+    felicitation(NAME)
 
 
 def main():
-    task = 'Answer "yes" if the number is even, otherwise answer "no".'
-    main_flow(task)
+    TASK = 'Answer "yes" if the NUMBER is even, otherwise answer "no".'
+    main_flow(TASK)
 
 
 if __name__ == '__main__':
-    name = main()
+    main()
