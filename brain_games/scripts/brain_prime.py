@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from random import randint
 from brain_games.cli import welcome_user
-from .brain_even import game_flow, felicitation, game, true_false_to_yes_no
+from .brain_even import game_flow, felicitation, game, t_f_to_yes_no, fault
 
 
 def is_prime(NUM):
@@ -15,7 +15,7 @@ def is_prime(NUM):
 
 def math():
     NUMBER = randint(1, 200)
-    return (NUMBER, true_false_to_yes_no(is_prime(NUMBER)))
+    return (NUMBER, t_f_to_yes_no(is_prime(NUMBER)), 'yesno')
 
 
 def main_flow(TASK):
@@ -23,10 +23,15 @@ def main_flow(TASK):
     print(TASK)
     N = 0
     while N < 3:
-        (EXPRESSION, RESULT) = math()
-        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT)
+        (EXPRESSION, RESULT, TYPE_OF_ANSWER) = math()
+        (GAME_RESULT, USER_ANSWER) = game(EXPRESSION, RESULT, TYPE_OF_ANSWER)
         N = game_flow(NAME, USER_ANSWER, RESULT, GAME_RESULT, N)
-    felicitation(NAME)
+        if N == -1:
+            break
+    if N == -1:
+        fault(USER_ANSWER, RESULT, NAME)
+    else:
+        felicitation(NAME)
 
 
 def main():
