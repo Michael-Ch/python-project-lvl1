@@ -13,7 +13,7 @@ def math():
             A = A % B
         else:
             B = B % A
-    return(str(NUM1) + ", " + str(NUM2), A + B, 'num')
+    return(str(NUM1) + " " + str(NUM2), A + B, 'num')
 
 
 def main_flow(TASK):
