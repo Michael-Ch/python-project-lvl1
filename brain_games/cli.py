@@ -5,8 +5,8 @@ import prompt
 
 def welcome_user():
     print("Welcome to the Brain Games, my dear friend!")
-    NAME = prompt.string('May I have your name?: ')
-    print('Hello, {}'.format(NAME))
+    NAME = prompt.string('May I have your name? ')
+    print('Hello, {}!'.format(NAME))
     return NAME
 
 

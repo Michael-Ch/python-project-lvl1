@@ -9,11 +9,11 @@ def math():
     NUM1 = randint(1, 25)
     NUM2 = randint(1, 25)
     if SIGN == 1:
-        return("{}+{}".format(NUM1, NUM2), NUM1 + NUM2, 'num')
+        return("{} + {}".format(NUM1, NUM2), NUM1 + NUM2, 'num')
     elif SIGN == 2:
-        return("{}-{}".format(NUM1, NUM2), NUM1 - NUM2, 'num')
+        return("{} - {}".format(NUM1, NUM2), NUM1 - NUM2, 'num')
     else:
-        return("{}*{}".format(NUM1, NUM2), NUM1 * NUM2, 'num')
+        return("{} * {}".format(NUM1, NUM2), NUM1 * NUM2, 'num')
 
 
 def main_flow(TASK):
