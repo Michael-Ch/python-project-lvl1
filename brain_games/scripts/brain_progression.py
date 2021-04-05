@@ -16,14 +16,16 @@ def math():
     II = 1
     AI = A1
     PROGRESSION = ''
-    while II <= N:
+    while II != N + 1:
         if II == NI:
-            PROGRESSION = PROGRESSION + " .."
+            PROGRESSION = PROGRESSION + ".."
             RESULT = AI
         else:
-            PROGRESSION = PROGRESSION + ' ' + str(AI)
+            PROGRESSION = PROGRESSION + str(AI)
         II = II + 1
         AI = AI + D
+        if II != N + 1:
+            PROGRESSION = PROGRESSION + " "
     return (PROGRESSION, RESULT, 'num')
 
 
@@ -44,7 +46,7 @@ def main_flow(TASK):
 
 
 def main():
-    TASK = 'What number is missing in the PROGRESSION?'
+    TASK = 'What number is missing in the progression?'
     main_flow(TASK)
 
 
